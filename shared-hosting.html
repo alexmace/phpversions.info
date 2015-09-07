@@ -27,7 +27,8 @@ layout: default
           </tr>
         </thead>
         <tbody>
-        {% for host in site.data.shared_hosts %}
+        {% assign shared_hosts = site.data.shared_hosts | sort: 'default' %}
+        {% for host in shared_hosts reversed %}
           <tr>
             <td><a href="{{ host.url }}">{{ host.name }}</a></td>
             <td>{% if host.php70 %}{{ host.php70 }}{% else %}-{% endif %}</td>
